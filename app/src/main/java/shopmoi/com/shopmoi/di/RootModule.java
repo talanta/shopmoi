@@ -1,6 +1,7 @@
 package shopmoi.com.shopmoi.di;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.squareup.otto.Bus;
 
@@ -10,6 +11,7 @@ import dagger.Module;
 import dagger.ObjectGraph;
 import dagger.Provides;
 import shopmoi.com.core.di.RepositoryModule;
+import shopmoi.com.core.repository.AppSettings;
 
 /**
  * Created by machome on 20/04/15.
@@ -31,5 +33,12 @@ public class RootModule {
     @Singleton
     public Bus provideBusEvent() {
         return new Bus();
+    }
+
+    @Provides
+    @Singleton
+    public AppSettings providesAppSettings() {
+        SharedPreferences pref = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        return new AppSettingsImp(pref);
     }
 }

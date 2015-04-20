@@ -2,6 +2,7 @@ package shopmoi.com.shopmoi.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +18,25 @@ import shopmoi.com.shopmoi.di.ShopApp;
 public abstract class BaseActivity extends ActionBarActivity {
 
     private ObjectGraph activityScopeGraph;
+    protected Toolbar toolbar;
 
+    protected abstract int getLayoutResourceId();
+    protected int getToolbarResourceId(){
+        return  0;
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutResourceId());
 
+        if (0 != getToolbarResourceId()){
+            setSupportActionBar(toolbar = (Toolbar) findViewById(getToolbarResourceId()));
+        }
         injectDependencies();
         injectViews();
     }

@@ -1,8 +1,35 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+
+    <!-- Styles -->
+    <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/md_pink_500</item>
+        <item name="colorPrimaryDark">@color/md_pink_900</item>
+        <item name="colorAccent">@color/md_pink_A700</item>
+        <!-- You can also set colorControlNormal, colorControlActivated
+           colorControlHighlight and colorSwitchThumbNormal. -->
+    </style>
+
+    <style name="Theme.Splash" parent="MyTheme.Base">
+        <item name="android:windowBackground">@color/md_pink_500</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="MyTheme" parent="MyTheme.Base">
+
+    </style>
+
+    <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="contentInsetStart">24dp</item>
+    </style>
+
+    <style name="Toolbar.Transparent">
+        <item name="android:background">@null</item>
     </style>
 
 </resources>

@@ -48,6 +48,7 @@ public class ActivityModule {
     Context provideActivityContext() {
         return activityContext;
     }
+
     @Provides
     @Singleton
     Navigator providesNavigator() {
