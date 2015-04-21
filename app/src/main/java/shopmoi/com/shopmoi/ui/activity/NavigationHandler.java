@@ -8,4 +8,6 @@ import android.support.v7.widget.Toolbar;
 public interface NavigationHandler {
 
     Toolbar getToolbar();
+
+    int getFragmentContainerResId();
 }

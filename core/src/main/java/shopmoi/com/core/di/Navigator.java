@@ -10,4 +10,7 @@ public interface Navigator {
      */
     void navigateToSearchWithDelay(int delay);
 
+    void navigateToSearchResults();
+
+    void navigateToWishList();
 }

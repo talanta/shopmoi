@@ -51,9 +51,9 @@ public class ActivityModule {
 
     @Provides
     @Singleton
-    Navigator providesNavigator() {
+    Navigator providesNavigator(NavigatorImp navigator) {
 
-        return new NavigatorImp(activityContext);
+        return navigator;
     }
 
 }

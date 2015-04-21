@@ -2,6 +2,9 @@ package shopmoi.com.core.repository;
 
 import retrofit.http.Body;
 import retrofit.http.POST;
+import rx.Observable;
+import shopmoi.com.core.repository.model.ProductRequest;
+import shopmoi.com.core.repository.model.ProductResult;
 import shopmoi.com.core.repository.model.SearchRequest;
 import shopmoi.com.core.repository.model.SearchResult;
 
@@ -11,7 +14,9 @@ import shopmoi.com.core.repository.model.SearchResult;
 public interface ShopApi {
 
     @POST("/Search")
-    SearchResult Search(@Body SearchRequest request);
+    Observable<SearchResult> search(@Body SearchRequest request);
 
+    @POST("/GetProduct")
+    Observable<ProductResult> getProduct(@Body ProductRequest request);
 
 }

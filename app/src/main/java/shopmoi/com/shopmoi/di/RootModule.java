@@ -10,8 +10,10 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.ObjectGraph;
 import dagger.Provides;
+import retrofit.RestAdapter;
 import shopmoi.com.core.di.RepositoryModule;
 import shopmoi.com.core.repository.AppSettings;
+import shopmoi.com.core.repository.ShopApi;
 
 /**
  * Created by machome on 20/04/15.
@@ -40,5 +42,16 @@ public class RootModule {
     public AppSettings providesAppSettings() {
         SharedPreferences pref = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
         return new AppSettingsImp(pref);
+    }
+
+    @Provides
+    @Singleton
+    public ShopApi provedesShopApi(AppSettings appSettings) {
+
+        RestAdapter a = new RestAdapter.Builder()
+                .setEndpoint(appSettings.getApiEndpoint())
+                .build();
+
+        return  a.create(ShopApi.class);
     }
 }

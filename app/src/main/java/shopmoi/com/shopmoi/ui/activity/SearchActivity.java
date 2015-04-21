@@ -33,6 +33,9 @@ public class SearchActivity extends BaseActivity implements SearchView, Navigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.initPresenter();
+        if (null == savedInstanceState) {
+            presenter.loadContext(SearchPresenter.SEARCH);
+        }
     }
 
     protected void initPresenter() {
@@ -45,4 +48,8 @@ public class SearchActivity extends BaseActivity implements SearchView, Navigati
         return null;
     }
 
+    @Override
+    public int getFragmentContainerResId() {
+        return R.id.container;
+    }
 }

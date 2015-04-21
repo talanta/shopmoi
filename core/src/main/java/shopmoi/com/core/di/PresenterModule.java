@@ -11,6 +11,7 @@ import shopmoi.com.core.presenters.LandingPresenterImp;
 import shopmoi.com.core.presenters.SearchPresenter;
 import shopmoi.com.core.presenters.SearchPresenterImp;
 import shopmoi.com.core.repository.AppSettings;
+import shopmoi.com.core.repository.ShopApi;
 
 /**
  * Created by machome on 20/04/15.
@@ -28,8 +29,8 @@ public class PresenterModule {
         }
         @Provides
         @Singleton
-        protected SearchPresenter providesSearchPresenter(Navigator navigator) {
-                return  new SearchPresenterImp(navigator);
+        protected SearchPresenter providesSearchPresenter(Navigator navigator, ShopApi api) {
+                return  new SearchPresenterImp(navigator, api);
         }
 
         @Provides
