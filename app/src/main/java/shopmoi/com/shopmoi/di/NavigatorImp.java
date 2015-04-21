@@ -8,8 +8,13 @@ import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.AdapterView;
 
+import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 
 import java.util.List;
@@ -18,6 +23,7 @@ import javax.inject.Inject;
 
 import shopmoi.com.core.di.ActivityContext;
 import shopmoi.com.core.di.Navigator;
+import shopmoi.com.shopmoi.R;
 import shopmoi.com.shopmoi.ui.activity.NavigationHandler;
 import shopmoi.com.shopmoi.ui.activity.SearchActivity;
 import shopmoi.com.shopmoi.ui.fragment.SearchFragment;
@@ -74,8 +80,35 @@ public class NavigatorImp implements Navigator {
     }
 
     protected void buildDrawer(NavigationHandler navigationHandler) {
-        new Drawer((Activity)activityContext)
+       final Drawer.Result result =  new Drawer((Activity)activityContext)
                 .withToolbar(navigationHandler.getToolbar())
-                .build();
+                .withHeader(R.layout.part_header)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.drawer_home)
+                                .withIcon(FontAwesome.Icon.faw_home)
+                                .withIdentifier(1),
+                        new PrimaryDrawerItem().withName(R.string.drawer_wish)
+                                .withIcon(FontAwesome.Icon.faw_heart)
+                                .withIdentifier(2))
+               .build();
+
+                result.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
+                        if (result.getCurrentSelection() == iDrawerItem.getIdentifier())
+                            return;
+
+                        switch (iDrawerItem.getIdentifier()) {
+
+                            case 1:
+                                navigateToSearchResults();
+                                break;
+                            case 2:
+                                navigateToWishList();
+                                break;
+                        }
+                    }
+        });
+
     }
 }
