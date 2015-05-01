@@ -7,7 +7,7 @@
    <ImageView
        android:id="@+id/headlogo"
        android:layout_centerInParent="true"
-       android:layout_width="wrap_content" android:src="@drawable/logob"
+       android:layout_width="wrap_content" android:src="@mipmap/brand"
        android:layout_height="wrap_content" />
 
     <LinearLayout
