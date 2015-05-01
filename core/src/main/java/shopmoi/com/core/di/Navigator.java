@@ -13,4 +13,6 @@ public interface Navigator {
     void navigateToSearchResults();
 
     void navigateToWishList();
+
+    void forceExit();
 }

@@ -8,4 +8,8 @@ public interface AppSettings {
     String getApiEndpoint();
 
     boolean isFirstLaunch();
+
+    void setFirstLaunch(boolean input);
+
+    void clear();
 }

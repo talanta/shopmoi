@@ -9,6 +9,8 @@ import shopmoi.com.core.repository.AppSettings;
 public class LandingPresenterImp extends LandingPresenter {
 
     private final int LANDING_DELAY = 1000;
+    private final int NO_DELAY = 0;
+
     private final AppSettings appSettings;
     private final Navigator navigator;
 
@@ -41,5 +43,11 @@ public class LandingPresenterImp extends LandingPresenter {
     @Override
     public void destroy() {
 
+    }
+
+    @Override
+    public void performFirstSearch(String input) {
+        appSettings.setFirstLaunch(false);
+        this.navigator.navigateToSearchWithDelay(NO_DELAY);
     }
 }

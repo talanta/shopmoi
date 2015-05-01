@@ -10,6 +10,7 @@ import shopmoi.com.shopmoi.BuildConfig;
  */
 public class AppSettingsImp implements AppSettings {
 
+    private  static final String FIRST_LAUNCH = "FIRST_LAUNCH";
     private final SharedPreferences preferences;
 
     public AppSettingsImp(SharedPreferences preferences) {
@@ -22,6 +23,16 @@ public class AppSettingsImp implements AppSettings {
 
     @Override
     public boolean isFirstLaunch() {
-        return false;
+        return preferences.getBoolean(FIRST_LAUNCH, true);
+    }
+
+    @Override
+    public void setFirstLaunch(boolean input) {
+        preferences.edit().putBoolean(FIRST_LAUNCH, input).commit();
+    }
+
+    @Override
+    public void clear() {
+        preferences.edit().clear().commit();
     }
 }

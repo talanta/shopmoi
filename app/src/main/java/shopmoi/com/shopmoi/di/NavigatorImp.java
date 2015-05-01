@@ -79,6 +79,11 @@ public class NavigatorImp implements Navigator {
         .commit();
     }
 
+    @Override
+    public void forceExit() {
+        ((Activity)activityContext).finish();
+    }
+
     protected void buildDrawer(NavigationHandler navigationHandler) {
        final Drawer.Result result =  new Drawer((Activity)activityContext)
                 .withToolbar(navigationHandler.getToolbar())

@@ -6,4 +6,11 @@
 
     <string name="drawer_home">Flirt</string>
     <string name="drawer_wish">Mes amours</string>
+
+    <string-array name="sample_search">
+        <item>Sac à dos</item>
+        <item>Fouet en cuir</item>
+        <item>Parfum Channel</item>
+        <item>PC portable</item>
+    </string-array>
 </resources>

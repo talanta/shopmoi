@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import shopmoi.com.core.di.Navigator;
+import shopmoi.com.core.repository.AppSettings;
 import shopmoi.com.core.repository.ShopApi;
 import shopmoi.com.core.repository.model.Product;
 
@@ -15,14 +16,16 @@ public class SearchPresenterImp extends SearchPresenter {
     private final List<Product> searchProducts;
     private final List<Product> lovedProducts;
 
+    private final AppSettings appSettings;
     private final Navigator navigator;
     private ShopApi api;
 
-    public SearchPresenterImp(Navigator navigator, ShopApi api) {
+    public SearchPresenterImp(Navigator navigator, AppSettings settings, ShopApi api) {
         this.navigator = navigator;
         this.searchProducts = new ArrayList<>();
         this.lovedProducts = new ArrayList<>();
         this.api = api;
+        this.appSettings = settings;
 
     }
     @Override
@@ -51,7 +54,7 @@ public class SearchPresenterImp extends SearchPresenter {
         switch (contextTag) {
             case SEARCH:
                 if (searchProducts.isEmpty()) {
-                    // perform search
+
                 }
                 navigator.navigateToSearchResults();
                 break;
@@ -66,5 +69,11 @@ public class SearchPresenterImp extends SearchPresenter {
         }
 
 
+    }
+
+    @Override
+    public void clearUserSettings() {
+        this.appSettings.clear();
+        this.navigator.forceExit();
     }
 }

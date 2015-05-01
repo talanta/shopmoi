@@ -29,8 +29,8 @@ public class PresenterModule {
         }
         @Provides
         @Singleton
-        protected SearchPresenter providesSearchPresenter(Navigator navigator, ShopApi api) {
-                return  new SearchPresenterImp(navigator, api);
+        protected SearchPresenter providesSearchPresenter(Navigator navigator, AppSettings settings, ShopApi api) {
+                return  new SearchPresenterImp(navigator, settings, api);
         }
 
         @Provides
