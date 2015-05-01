@@ -10,7 +10,9 @@ import shopmoi.com.shopmoi.BuildConfig;
  */
 public class AppSettingsImp implements AppSettings {
 
-    private  static final String FIRST_LAUNCH = "FIRST_LAUNCH";
+    private static final String FIRST_LAUNCH = "FIRST_LAUNCH";
+    private static final String MAIN_SEARCH = "MAIN_SEARCH";
+
     private final SharedPreferences preferences;
 
     public AppSettingsImp(SharedPreferences preferences) {
@@ -27,9 +29,17 @@ public class AppSettingsImp implements AppSettings {
     }
 
     @Override
-    public void setFirstLaunch(boolean input) {
-        preferences.edit().putBoolean(FIRST_LAUNCH, input).commit();
+    public void setMainSearch(String search) {
+
+        preferences.edit().putBoolean(FIRST_LAUNCH, false).commit();
+        preferences.edit().putString(MAIN_SEARCH, search).commit();
     }
+
+    @Override
+    public String getMainSearch() {
+        return preferences.getString(MAIN_SEARCH, "oooo");
+    }
+
 
     @Override
     public void clear() {

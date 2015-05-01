@@ -47,7 +47,7 @@ public class LandingPresenterImp extends LandingPresenter {
 
     @Override
     public void performFirstSearch(String input) {
-        appSettings.setFirstLaunch(false);
+        appSettings.setMainSearch(input);
         this.navigator.navigateToSearchWithDelay(NO_DELAY);
     }
 }

@@ -20,6 +20,8 @@ public class SearchPresenterImp extends SearchPresenter {
     private final Navigator navigator;
     private ShopApi api;
 
+
+
     public SearchPresenterImp(Navigator navigator, AppSettings settings, ShopApi api) {
         this.navigator = navigator;
         this.searchProducts = new ArrayList<>();
@@ -30,7 +32,7 @@ public class SearchPresenterImp extends SearchPresenter {
     }
     @Override
     public void initialize() {
-        // load observers...
+        currentSearch = appSettings.getMainSearch();
     }
 
     @Override
@@ -47,6 +49,7 @@ public class SearchPresenterImp extends SearchPresenter {
     public void destroy() {
 
     }
+
 
     @Override
     public void loadContext(String contextTag) {

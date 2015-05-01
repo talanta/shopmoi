@@ -9,7 +9,9 @@ public interface AppSettings {
 
     boolean isFirstLaunch();
 
-    void setFirstLaunch(boolean input);
+    void setMainSearch(String search);
+
+    String getMainSearch();
 
     void clear();
 }

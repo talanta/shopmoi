@@ -3,6 +3,7 @@ package shopmoi.com.shopmoi.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
+import butterknife.InjectView;
 import shopmoi.com.core.presenters.SearchPresenter;
 import shopmoi.com.shopmoi.R;
 
@@ -20,6 +22,8 @@ import shopmoi.com.shopmoi.R;
  */
 public class SearchFragment extends BaseFragment {
 
+    @InjectView(R.id.search_view)
+    protected SearchView searchView;
     @Inject
     protected SearchPresenter presenter;
 
@@ -39,11 +43,18 @@ public class SearchFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initPager();
+        initSearch();
     }
 
     protected void initPager(){
         // get search from bundle...
         // then...
+    }
+
+    protected void initSearch() {
+        searchView.setQuery(presenter.getCurrentSearch(), false);
+        //searchView.onActionViewExpanded();
+        searchView.setIconifiedByDefault(false);
     }
 
     @Override

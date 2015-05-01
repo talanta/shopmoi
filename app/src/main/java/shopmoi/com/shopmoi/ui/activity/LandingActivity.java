@@ -64,12 +64,12 @@ public class LandingActivity extends BaseActivity implements LandingView{
         LandingHelpAdapter adapter = new LandingHelpAdapter(sample);
         itemList.setLayoutManager(new StaggeredGridLayoutManager(3, OrientationHelper.HORIZONTAL));
         itemList.setAdapter(adapter);
-//        adapter.setOnSearchItemClickListener(new LandingHelpAdapter.OnSearchItemClickListener() {
-//            @Override
-//            public void onSelected(String item) {
-//                presenter.performFirstSearch(item);
-//            }
-//        });
+        adapter.setOnSearchItemClickListener(new LandingHelpAdapter.OnSearchItemClickListener() {
+            @Override
+            public void onSelected(String item) {
+                presenter.performFirstSearch(item);
+            }
+        });
     }
 
     @Override
