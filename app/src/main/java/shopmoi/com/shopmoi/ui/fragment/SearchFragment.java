@@ -1,5 +1,6 @@
 package shopmoi.com.shopmoi.ui.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
@@ -15,12 +16,16 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 import shopmoi.com.core.presenters.SearchPresenter;
+import shopmoi.com.core.views.SearchResultPart;
 import shopmoi.com.shopmoi.R;
 
 /**
  * Created by machome on 20/04/15.
  */
-public class SearchFragment extends BaseFragment {
+public class SearchFragment extends BaseFragment implements SearchResultPart {
+
+
+    private ProgressDialog progress;
 
     @InjectView(R.id.search_view)
     protected SearchView searchView;
@@ -42,8 +47,18 @@ public class SearchFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        progress = new ProgressDialog(getActivity());
+        progress.setIndeterminate(true);
         initPager();
         initSearch();
+        initLoad();
+    }
+
+
+    protected void initLoad() {
+        if (presenter.getIsLoading()) {
+            progress.show();
+        }
     }
 
     protected void initPager(){
@@ -74,5 +89,23 @@ public class SearchFragment extends BaseFragment {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.attachSearchResultPart(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        presenter.detachSearchResultPart();
+    }
+
+    @Override
+    public void loadingFinish() {
+        // load result..
+        progress.dismiss();
     }
 }

@@ -1,5 +1,6 @@
 package shopmoi.com.core.presenters;
 
+import shopmoi.com.core.views.SearchResultPart;
 import shopmoi.com.core.views.SearchView;
 
 /**
@@ -7,6 +8,7 @@ import shopmoi.com.core.views.SearchView;
  */
 public abstract class  SearchPresenter extends Presenter<SearchView>{
 
+    protected boolean isLoading;
     public static final String SEARCH ="search";
     public static final String WISH_LIST = "wishlist";
 
@@ -17,7 +19,16 @@ public abstract class  SearchPresenter extends Presenter<SearchView>{
 
     public abstract void clearUserSettings();
 
+    public boolean getIsLoading() {
+        return isLoading;
+    }
+
+
     public String getCurrentSearch() {
         return currentSearch;
     }
+
+    public abstract void attachSearchResultPart(SearchResultPart part);
+
+    public abstract void detachSearchResultPart();
 }

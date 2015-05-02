@@ -15,6 +15,7 @@ import shopmoi.com.core.repository.model.Product;
 import shopmoi.com.core.repository.model.SearchDetails;
 import shopmoi.com.core.repository.model.SearchRequest;
 import shopmoi.com.core.repository.model.SearchResult;
+import shopmoi.com.core.views.SearchResultPart;
 
 /**
  * Created by machome on 20/04/15.
@@ -29,6 +30,7 @@ public class SearchPresenterImp extends SearchPresenter {
     private ShopApi api;
     private Observer<SearchResult> searchResultObserver;
     private Subscription searchSubscription;
+    private SearchResultPart searchResultPart;
 
     public SearchPresenterImp(Navigator navigator, AppSettings settings, ShopApi api) {
         this.navigator = navigator;
@@ -51,6 +53,7 @@ public class SearchPresenterImp extends SearchPresenter {
             searchSubscription.unsubscribe();
             searchSubscription = null;
         }
+        isLoading = true;
         searchSubscription = api.search(buildRequest())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -62,9 +65,9 @@ public class SearchPresenterImp extends SearchPresenter {
         searchResultObserver = new Observer<SearchResult>() {
             @Override
             public void onCompleted() {
-
+                isLoading = false;
+                searchResultPart.loadingFinish();
             }
-
 
             @Override
             public void onError(Throwable e) {
@@ -134,5 +137,15 @@ public class SearchPresenterImp extends SearchPresenter {
     public void clearUserSettings() {
         this.appSettings.clear();
         this.navigator.forceExit();
+    }
+
+    @Override
+    public void attachSearchResultPart(SearchResultPart part) {
+        searchResultPart = part;
+    }
+
+    @Override
+    public void detachSearchResultPart() {
+        searchResultPart = null;
     }
 }
