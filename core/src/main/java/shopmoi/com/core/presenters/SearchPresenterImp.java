@@ -3,10 +3,18 @@ package shopmoi.com.core.presenters;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observer;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import shopmoi.com.core.di.Navigator;
 import shopmoi.com.core.repository.AppSettings;
 import shopmoi.com.core.repository.ShopApi;
+import shopmoi.com.core.repository.model.Pagination;
 import shopmoi.com.core.repository.model.Product;
+import shopmoi.com.core.repository.model.SearchDetails;
+import shopmoi.com.core.repository.model.SearchRequest;
+import shopmoi.com.core.repository.model.SearchResult;
 
 /**
  * Created by machome on 20/04/15.
@@ -19,8 +27,8 @@ public class SearchPresenterImp extends SearchPresenter {
     private final AppSettings appSettings;
     private final Navigator navigator;
     private ShopApi api;
-
-
+    private Observer<SearchResult> searchResultObserver;
+    private Subscription searchSubscription;
 
     public SearchPresenterImp(Navigator navigator, AppSettings settings, ShopApi api) {
         this.navigator = navigator;
@@ -30,9 +38,57 @@ public class SearchPresenterImp extends SearchPresenter {
         this.appSettings = settings;
 
     }
+
+
+
     @Override
     public void initialize() {
         currentSearch = appSettings.getMainSearch();
+
+        buildSearchObserver();
+
+        if (searchSubscription != null) {
+            searchSubscription.unsubscribe();
+            searchSubscription = null;
+        }
+        searchSubscription = api.search(buildRequest())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(searchResultObserver);
+    }
+
+    private void buildSearchObserver(){
+      //  Obser
+        searchResultObserver = new Observer<SearchResult>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(SearchResult searchResult) {
+                if (null != searchResult) {
+
+                }
+            }
+        };
+    }
+
+    private SearchRequest buildRequest() {
+        SearchDetails details = new SearchDetails();
+        Pagination pagination = new Pagination();
+        pagination.setItemsPerPage(20);
+        pagination.setPageNumber(1);
+        details.setKeyword(currentSearch);
+        details.setPagination(pagination);
+
+        return new SearchRequest(details);
     }
 
     @Override

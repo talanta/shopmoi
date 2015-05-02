@@ -6,6 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.android.AndroidLog;
 import shopmoi.com.core.repository.AppSettings;
 
 /**
@@ -26,6 +27,8 @@ public class RepositoryModule {
 
                 RestAdapter adapter = new RestAdapter.Builder()
                         .setEndpoint(endpoint)
+                        .setLogLevel(RestAdapter.LogLevel.FULL)
+                        .setLog(new AndroidLog("Retrofit"))
                         .build();
                 return adapter;
         }

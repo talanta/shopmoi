@@ -19,8 +19,8 @@ import shopmoi.com.core.repository.ShopApi;
  * Created by machome on 20/04/15.
  */
 @Module(
-        includes = { RepositoryModule.class },
-        injects = { ShopApp.class },
+        includes = {RepositoryModule.class},
+        injects = {ShopApp.class},
         library = true
 )
 public class RootModule {
@@ -46,12 +46,7 @@ public class RootModule {
 
     @Provides
     @Singleton
-    public ShopApi provedesShopApi(AppSettings appSettings) {
-
-        RestAdapter a = new RestAdapter.Builder()
-                .setEndpoint(appSettings.getApiEndpoint())
-                .build();
-
-        return  a.create(ShopApi.class);
+    public ShopApi provedesShopApi(RestAdapter adapter) {
+        return adapter.create(ShopApi.class);
     }
 }

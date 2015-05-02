@@ -1,11 +1,19 @@
 package shopmoi.com.core.repository.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by machome on 21/04/15.
  */
 public class Product {
+
+    @SerializedName("Name")
     private String name;
+    @SerializedName("Brand")
+    private String brand;
+    @SerializedName("Description")
     private String description;
+    @SerializedName("Id")
     private String id;
 
     public String getName() {
@@ -30,5 +38,13 @@ public class Product {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }
