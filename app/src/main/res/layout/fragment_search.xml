@@ -65,6 +65,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <shopmoi.com.shopmoi.views.JazzyViewPager android:id="@+id/pager" android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>

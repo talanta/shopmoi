@@ -3,7 +3,7 @@
 
     <!-- Styles -->
     <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="colorPrimary">@color/md_pink_500</item>
         <item name="colorPrimaryDark">@color/md_pink_900</item>
