@@ -2,6 +2,8 @@ package shopmoi.com.shopmoi.di;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.List;
 
 import dagger.ObjectGraph;
@@ -16,6 +18,7 @@ public class ShopApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
         // init twitter config..
         injectDependencies();

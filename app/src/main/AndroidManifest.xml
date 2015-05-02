@@ -30,6 +30,9 @@
             android:name=".ui.activity.DetailsActivity"
             android:label="@string/app_name" >
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="90093c62c45ff9a1152772ff3d3d0b20e6275836" />
     </application>
 
 </manifest>
