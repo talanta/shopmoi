@@ -19,6 +19,8 @@ import butterknife.InjectView;
 import shopmoi.com.core.presenters.SearchPresenter;
 import shopmoi.com.core.views.SearchResultPart;
 import shopmoi.com.shopmoi.R;
+import shopmoi.com.shopmoi.ui.adapter.SearchResultAdapter;
+import shopmoi.com.shopmoi.views.JazzyViewPager;
 
 /**
  * Created by machome on 20/04/15.
@@ -27,11 +29,13 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
 
     private ProgressDialog progress;
     @InjectView(R.id.pager)
-    protected ViewPager pager;
+    protected JazzyViewPager pager;
     @InjectView(R.id.search_view)
     protected SearchView searchView;
     @Inject
     protected SearchPresenter presenter;
+
+    protected SearchResultAdapter adapter = new SearchResultAdapter();
 
 
     @Override
@@ -63,6 +67,9 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
     }
 
     protected void initPager(){
+
+        pager.setTransitionEffect(JazzyViewPager.TransitionEffect.Stack);
+        pager.setAdapter(adapter);
         // get search from bundle...
         // then...
     }
