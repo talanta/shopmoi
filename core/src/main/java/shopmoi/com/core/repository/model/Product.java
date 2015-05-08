@@ -15,6 +15,8 @@ public class Product {
     private String description;
     @SerializedName("Id")
     private String id;
+    @SerializedName("MainImageUrl")
+    private String mainImageUrl;
 
     public String getName() {
         return name;
@@ -46,5 +48,13 @@ public class Product {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getMainImageUrl() {
+        return mainImageUrl;
+    }
+
+    public void setMainImageUrl(String mainImageUrl) {
+        this.mainImageUrl = mainImageUrl;
     }
 }

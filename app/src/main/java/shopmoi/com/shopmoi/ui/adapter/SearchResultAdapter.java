@@ -1,10 +1,13 @@
 package shopmoi.com.shopmoi.ui.adapter;
 
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.w3c.dom.Text;
 
@@ -13,6 +16,7 @@ import java.util.List;
 
 import shopmoi.com.core.repository.model.Product;
 import shopmoi.com.shopmoi.R;
+import shopmoi.com.shopmoi.views.OutlineContainer;
 
 /**
  * Created by machome on 03/05/15.
@@ -28,11 +32,13 @@ public class SearchResultAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object o) {
-        return false;
+
+        if (!(view instanceof OutlineContainer))
+            return view == o;
+        return ((OutlineContainer) view).getChildAt(0) == o;
     }
 
     public void updateProducts(List<Product> list) {
-
         products = list;
         notifyDataSetChanged();
     }
@@ -47,16 +53,18 @@ public class SearchResultAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-
         container.removeView((View) object);
-        //super.destroyItem(container, position, object);
+        //com.facebook.drawee.view.SimpleDraweeView
     }
 
     protected View getView(LayoutInflater inflater, ViewGroup container, int position) {
         View root = inflater.inflate(R.layout.item_pager, null);
 
         Product item = products.get(position);
-        TextView name = (TextView)root.findViewById(R.id.txt_name);
+        TextView name = (TextView) root.findViewById(R.id.txt_name);
+        SimpleDraweeView pic = (SimpleDraweeView) root.findViewById(R.id.product_picture);
+
+        pic.setImageURI(Uri.parse(item.getMainImageUrl()));
         name.setText(item.getName());
 
         return root;

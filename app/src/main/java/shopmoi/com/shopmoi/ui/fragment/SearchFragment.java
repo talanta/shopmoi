@@ -91,11 +91,8 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
     }
 
     protected void initPager(){
-
         pager.setTransitionEffect(JazzyViewPager.TransitionEffect.Stack);
         pager.setAdapter(adapter);
-        // get search from bundle...
-        // then...
     }
 
     protected void initSearch() {

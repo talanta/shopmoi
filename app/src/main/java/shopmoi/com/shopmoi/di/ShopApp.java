@@ -3,6 +3,8 @@ package shopmoi.com.shopmoi.di;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import io.fabric.sdk.android.Fabric;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class ShopApp extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
 
+        Fresco.initialize(this);
         // init twitter config..
         injectDependencies();
     }
