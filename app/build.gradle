@@ -24,7 +24,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         Properties properties = new Properties()
         properties.load(project.file('app.properties').newDataInputStream());
@@ -66,7 +66,6 @@ dependencies {
     compile 'com.getbase:floatingactionbutton:1.9.0'
     compile 'com.mikepenz.iconics:library:0.9.0@aar'
     compile('com.mikepenz.materialdrawer:library:2.7.7@aar')
-    compile 'com.github.navasmdc:MaterialDesign:1.+@aar'
    // compile "org.parceler:parceler-api:+"
     compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
         // exclusion is not necessary, but generally a good idea.

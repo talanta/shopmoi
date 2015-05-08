@@ -15,13 +15,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <TextView
+
+    <TextView android:layout_alignParentBottom="true"
+        android:padding="@dimen/backdrop_margin"
+        android:background="#AA000000"
         android:id="@+id/txt_name"
-        android:textColor="@android:color/holo_red_dark"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Inverse"
         android:text="@string/app_name"/>
 
     </RelativeLayout>

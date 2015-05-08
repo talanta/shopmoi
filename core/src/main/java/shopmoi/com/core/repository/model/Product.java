@@ -17,6 +17,8 @@ public class Product {
     private String id;
     @SerializedName("MainImageUrl")
     private String mainImageUrl;
+    @SerializedName("BestOffer")
+    private BestOffer bestOffer;
 
     public String getName() {
         return name;

@@ -54,7 +54,6 @@ public class SearchResultAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
-        //com.facebook.drawee.view.SimpleDraweeView
     }
 
     protected View getView(LayoutInflater inflater, ViewGroup container, int position) {
