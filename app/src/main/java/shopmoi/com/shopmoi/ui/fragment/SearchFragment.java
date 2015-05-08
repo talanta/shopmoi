@@ -13,9 +13,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.typeface.FontAwesome;
+import com.squareup.otto.Bus;
+
 import javax.inject.Inject;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import shopmoi.com.core.presenters.SearchPresenter;
 import shopmoi.com.core.views.SearchResultPart;
 import shopmoi.com.shopmoi.R;
@@ -34,6 +41,15 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
     protected SearchView searchView;
     @Inject
     protected SearchPresenter presenter;
+
+    @InjectView(R.id.fab_refresh)
+    FloatingActionButton fabRefresh;
+    @InjectView(R.id.fab_info)
+    FloatingActionButton fabInfo;
+    @InjectView(R.id.fab_love)
+    FloatingActionButton fabLove;
+
+
 
     protected SearchResultAdapter adapter = new SearchResultAdapter();
 
@@ -54,6 +70,14 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
         super.onViewCreated(view, savedInstanceState);
         progress = new ProgressDialog(getActivity());
         progress.setIndeterminate(true);
+
+        fabInfo.setIconDrawable(new IconicsDrawable(getActivity(),
+                GoogleMaterial.Icon.gmd_info_outline).colorRes(android.R.color.white));
+        fabLove.setIconDrawable(new IconicsDrawable(getActivity(),
+                FontAwesome.Icon.faw_heart).colorRes(android.R.color.white));
+        fabRefresh.setIconDrawable(new IconicsDrawable(getActivity(),
+                GoogleMaterial.Icon.gmd_refresh).colorRes(android.R.color.white));
+
         initPager();
         initSearch();
         initLoad();
@@ -115,5 +139,14 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
     public void loadingFinish() {
         // load result..
         progress.dismiss();
+        adapter.updateProducts(presenter.getProducts());
+    }
+
+    @OnClick(R.id.fab_refresh)
+    protected void onRefresh() {
+        presenter.refresh();
+        if (presenter.getIsLoading()) {
+            progress.show();
+        }
     }
 }

@@ -46,9 +46,11 @@ public class SearchPresenterImp extends SearchPresenter {
     @Override
     public void initialize() {
         currentSearch = appSettings.getMainSearch();
-
         buildSearchObserver();
+        refresh();
+    }
 
+    public void refresh() {
         if (searchSubscription != null) {
             searchSubscription.unsubscribe();
             searchSubscription = null;
@@ -76,9 +78,9 @@ public class SearchPresenterImp extends SearchPresenter {
 
             @Override
             public void onNext(SearchResult searchResult) {
-                if (null != searchResult) {
-
-                }
+                products = searchResult.getProducts();
+                searchResultPart.loadingFinish();
+              //  searchResult.getProducts()
             }
         };
     }

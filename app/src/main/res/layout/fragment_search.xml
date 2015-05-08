@@ -1,64 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <android.support.v7.widget.SearchView
                 android:id="@+id/search_view"
-                app:queryHint="@android:string/search_go"
-                android:background="@android:color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                app:queryHint="@android:string/search_go" />
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
     <LinearLayout
-        android:weightSum="10"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:weightSum="10">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_weight="8.5"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="8.5">
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="6dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/shadowbox" />
+                android:background="@drawable/shadowbox"
+                android:orientation="vertical" />
+
             <LinearLayout
-                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/shadowbox" />
-            <LinearLayout
-                android:layout_centerHorizontal="true"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="24dp"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout"
                 android:background="@drawable/shadowbox"
-                android:layout_marginTop="6dp">
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/shadowbox"
+                android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -66,11 +72,40 @@
                     <shopmoi.com.shopmoi.views.JazzyViewPager
                         android:id="@+id/pager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent" />
 
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="?attr/colorAccent"
+                app:fab_colorPressed="?attr/colorPrimary"
+                app:fab_size="mini" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_love"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="?attr/colorPrimary"
+                app:fab_colorPressed="?attr/colorAccent" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="?attr/colorAccent"
+                app:fab_colorPressed="?attr/colorPrimary"
+                app:fab_size="mini" />
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

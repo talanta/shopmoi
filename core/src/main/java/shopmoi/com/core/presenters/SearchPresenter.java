@@ -1,5 +1,8 @@
 package shopmoi.com.core.presenters;
 
+import java.util.List;
+
+import shopmoi.com.core.repository.model.Product;
 import shopmoi.com.core.views.SearchResultPart;
 import shopmoi.com.core.views.SearchView;
 
@@ -8,12 +11,15 @@ import shopmoi.com.core.views.SearchView;
  */
 public abstract class  SearchPresenter extends Presenter<SearchView>{
 
+    protected List<Product> products;
     protected boolean isLoading;
     public static final String SEARCH ="search";
     public static final String WISH_LIST = "wishlist";
 
 
     protected String currentSearch;
+
+    public abstract void refresh();
 
     public abstract void loadContext(String contextTag);
 
@@ -26,6 +32,10 @@ public abstract class  SearchPresenter extends Presenter<SearchView>{
 
     public String getCurrentSearch() {
         return currentSearch;
+    }
+
+    public List<Product> getProducts(){
+        return products;
     }
 
     public abstract void attachSearchResultPart(SearchResultPart part);
