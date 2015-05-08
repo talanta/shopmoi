@@ -61,10 +61,12 @@ public class SearchResultAdapter extends PagerAdapter {
 
         Product item = products.get(position);
         TextView name = (TextView) root.findViewById(R.id.txt_name);
+        TextView price = (TextView) root.findViewById(R.id.txt_price);
         SimpleDraweeView pic = (SimpleDraweeView) root.findViewById(R.id.product_picture);
 
         pic.setImageURI(Uri.parse(item.getMainImageUrl()));
         name.setText(item.getName());
+        price.setText(""+ item.getBestOffer().getSalePrice());
 
         return root;
     }

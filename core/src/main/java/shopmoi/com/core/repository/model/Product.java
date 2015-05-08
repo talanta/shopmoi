@@ -59,4 +59,12 @@ public class Product {
     public void setMainImageUrl(String mainImageUrl) {
         this.mainImageUrl = mainImageUrl;
     }
+
+    public BestOffer getBestOffer() {
+        return bestOffer;
+    }
+
+    public void setBestOffer(BestOffer bestOffer) {
+        this.bestOffer = bestOffer;
+    }
 }
