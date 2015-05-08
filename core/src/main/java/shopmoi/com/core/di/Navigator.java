@@ -1,5 +1,7 @@
 package shopmoi.com.core.di;
 
+import shopmoi.com.core.repository.model.Product;
+
 /**
  * Created by machome on 20/04/15.
  */
@@ -13,6 +15,8 @@ public interface Navigator {
     void navigateToSearchResults();
 
     void navigateToWishList();
+
+    void navigateToDetails(Product product);
 
     void forceExit();
 }

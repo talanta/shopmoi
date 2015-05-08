@@ -50,6 +50,11 @@ public class SearchPresenterImp extends SearchPresenter {
         refresh();
     }
 
+    @Override
+    public void requestInfo() {
+        navigator.navigateToDetails(products.get(selectedItem));
+    }
+
     public void refresh() {
         if (searchSubscription != null) {
             searchSubscription.unsubscribe();
@@ -79,6 +84,7 @@ public class SearchPresenterImp extends SearchPresenter {
             @Override
             public void onNext(SearchResult searchResult) {
                 products = searchResult.getProducts();
+                selectedItem = 0;
                 searchResultPart.loadingFinish();
               //  searchResult.getProducts()
             }

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -17,13 +18,17 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import shopmoi.com.core.di.ActivityContext;
 import shopmoi.com.core.di.Navigator;
+import shopmoi.com.core.repository.model.Product;
 import shopmoi.com.shopmoi.R;
+import shopmoi.com.shopmoi.ui.activity.DetailsActivity;
 import shopmoi.com.shopmoi.ui.activity.NavigationHandler;
 import shopmoi.com.shopmoi.ui.activity.SearchActivity;
 import shopmoi.com.shopmoi.ui.fragment.SearchFragment;
@@ -62,7 +67,7 @@ public class NavigatorImp implements Navigator {
         if (! (activityContext instanceof NavigationHandler))
             return;
         Fragment frag = Fragment.instantiate(activityContext, SearchFragment.class.getName());
-        ((ActionBarActivity) activityContext).getSupportFragmentManager()
+        ((AppCompatActivity) activityContext).getSupportFragmentManager()
                 .beginTransaction()
                 .replace(((NavigationHandler) activityContext).getFragmentContainerResId(),frag)
                 .commit();
@@ -73,10 +78,20 @@ public class NavigatorImp implements Navigator {
         if (! (activityContext instanceof NavigationHandler))
             return;
         Fragment frag = Fragment.instantiate(activityContext, WishFragment.class.getName());
-        ((ActionBarActivity) activityContext).getSupportFragmentManager()
+        ((AppCompatActivity) activityContext).getSupportFragmentManager()
         .beginTransaction()
         .replace(((NavigationHandler) activityContext).getFragmentContainerResId(), frag)
         .commit();
+    }
+
+    @Override
+    public void navigateToDetails(Product product) {
+
+        Bundle args = new Bundle();
+
+        Intent detailsActivityIntent = new Intent(activityContext, DetailsActivity.class);
+        detailsActivityIntent.putExtra(DetailsActivity.EXTRA, Parcels.wrap(product));
+        ActivityCompat.startActivity((Activity) activityContext, detailsActivityIntent, args);
     }
 
     @Override

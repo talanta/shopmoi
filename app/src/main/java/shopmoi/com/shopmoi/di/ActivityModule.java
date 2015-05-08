@@ -2,6 +2,7 @@ package shopmoi.com.shopmoi.di;
 
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.squareup.otto.Bus;
 
@@ -37,8 +38,8 @@ import shopmoi.com.shopmoi.ui.fragment.WishFragment;
 )
 public class ActivityModule {
 
-    private final ActionBarActivity activityContext;
-    public ActivityModule(ActionBarActivity context){
+    private final AppCompatActivity activityContext;
+    public ActivityModule(AppCompatActivity context){
         this.activityContext = context;
 
     }

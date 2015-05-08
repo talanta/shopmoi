@@ -2,9 +2,12 @@ package shopmoi.com.core.repository.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 /**
  * Created by machome on 21/04/15.
  */
+@Parcel
 public class Product {
 
     @SerializedName("Name")

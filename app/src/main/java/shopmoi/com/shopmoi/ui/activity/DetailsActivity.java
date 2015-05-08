@@ -15,6 +15,7 @@ import shopmoi.com.shopmoi.R;
  */
 public class DetailsActivity extends BaseActivity implements DetailsView {
 
+    public static final String EXTRA = "extra";
     @Inject
     protected DetailsPresenter presenter;
 

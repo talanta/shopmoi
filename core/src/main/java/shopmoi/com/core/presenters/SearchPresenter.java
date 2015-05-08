@@ -11,6 +11,7 @@ import shopmoi.com.core.views.SearchView;
  */
 public abstract class  SearchPresenter extends Presenter<SearchView>{
 
+    protected int selectedItem;
     protected List<Product> products;
     protected boolean isLoading;
     public static final String SEARCH ="search";
@@ -18,6 +19,8 @@ public abstract class  SearchPresenter extends Presenter<SearchView>{
 
 
     protected String currentSearch;
+
+    public abstract void requestInfo();
 
     public abstract void refresh();
 
@@ -41,4 +44,12 @@ public abstract class  SearchPresenter extends Presenter<SearchView>{
     public abstract void attachSearchResultPart(SearchResultPart part);
 
     public abstract void detachSearchResultPart();
+
+    public int getSelectedItem() {
+        return selectedItem;
+    }
+
+    public void setSelectedItem(int selectedItem) {
+        this.selectedItem = selectedItem;
+    }
 }

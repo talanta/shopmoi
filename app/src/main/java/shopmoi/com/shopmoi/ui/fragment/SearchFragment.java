@@ -92,6 +92,22 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
 
     protected void initPager(){
         pager.setTransitionEffect(JazzyViewPager.TransitionEffect.Stack);
+        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                presenter.setSelectedItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         pager.setAdapter(adapter);
     }
 
@@ -137,6 +153,7 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
         // load result..
         progress.dismiss();
         adapter.updateProducts(presenter.getProducts());
+        //pager.scroll
     }
 
     @OnClick(R.id.fab_refresh)
@@ -146,4 +163,9 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
             progress.show();
         }
     }
+    @OnClick(R.id.fab_info)
+    protected void onInfo() {
+        presenter.requestInfo();
+    }
+
 }

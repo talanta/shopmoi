@@ -2,6 +2,7 @@ package shopmoi.com.shopmoi.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import shopmoi.com.shopmoi.di.ShopApp;
 /**
  * Created by machome on 20/04/15.
  */
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private ObjectGraph activityScopeGraph;
     protected Toolbar toolbar;
