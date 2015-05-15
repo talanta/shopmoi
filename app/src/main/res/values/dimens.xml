@@ -7,4 +7,6 @@
     <dimen name="backdrop_height">196dp</dimen>
     <dimen name="backdrop_margin">16dp</dimen>
     <dimen name="flexible_space_image_height">440dp</dimen>
+    <dimen name="header_bar_height">72dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
 </resources>
