@@ -87,7 +87,9 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
     protected void initLoad() {
         if (presenter.getIsLoading()) {
             progress.show();
+            return;
         }
+        adapter.updateProducts(presenter.getProducts());
     }
 
     protected void initPager(){

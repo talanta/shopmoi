@@ -27,6 +27,7 @@ public class SearchPresenterImp extends SearchPresenter {
 
     private final AppSettings appSettings;
     private final Navigator navigator;
+
     private ShopApi api;
     private Observer<SearchResult> searchResultObserver;
     private Subscription searchSubscription;
@@ -40,7 +41,6 @@ public class SearchPresenterImp extends SearchPresenter {
         this.appSettings = settings;
 
     }
-
 
 
     @Override

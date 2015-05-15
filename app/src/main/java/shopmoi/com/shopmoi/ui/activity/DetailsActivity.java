@@ -2,11 +2,14 @@ package shopmoi.com.shopmoi.ui.activity;
 
 import android.os.Bundle;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import shopmoi.com.core.presenters.DetailsPresenter;
+import shopmoi.com.core.repository.model.Product;
 import shopmoi.com.core.views.DetailsView;
 import shopmoi.com.shopmoi.R;
 
@@ -30,7 +33,9 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     }
 
     protected void initPresenter() {
+        Product item = Parcels.unwrap(getIntent().getExtras().getParcelable(EXTRA));
         this.presenter.setView(this);
+        this.presenter.setProduct(item);
         this.presenter.initialize();
     }
 

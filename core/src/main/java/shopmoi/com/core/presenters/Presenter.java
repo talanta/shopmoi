@@ -1,6 +1,7 @@
 package shopmoi.com.core.presenters;
 
 
+import shopmoi.com.core.repository.model.Product;
 import shopmoi.com.core.views.View;
 
 /**
