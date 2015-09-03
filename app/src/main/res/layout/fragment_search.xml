@@ -31,6 +31,7 @@
         android:weightSum="10">
 
         <RelativeLayout
+            android:id="@+id/pager_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8.5">
@@ -78,34 +79,62 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <LinearLayout
+
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab_refresh"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:fabSize="mini" />-->
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_love"
+            app:layout_anchor="@+id/pager_container"
+            app:layout_anchorGravity="bottom|right|end"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="wrap_content"/>
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="?attr/colorAccent"
-                app:fab_colorPressed="?attr/colorPrimary"
-                app:fab_size="mini" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_weight="1.5"
+            android:layout_height="0dp">
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_love"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="?attr/colorPrimary"
-                app:fab_colorPressed="?attr/colorAccent" />
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="?attr/colorAccent"
-                app:fab_colorPressed="?attr/colorPrimary"
-                app:fab_size="mini" />
+            <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/txt_price"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_gravity="center"
+                    android:id="@+id/btn_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:backgroundTint="?attr/colorAccent"
+                    android:text="plus"/>
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="top"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+
         </LinearLayout>
 
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -7,7 +7,7 @@
         <item name="windowActionBar">false</item>
         <item name="colorPrimary">@color/md_pink_500</item>
         <item name="colorPrimaryDark">@color/md_pink_900</item>
-        <item name="colorAccent">@color/md_pink_A700</item>
+        <item name="colorAccent">@color/md_teal_400</item>
         <!-- You can also set colorControlNormal, colorControlActivated
            colorControlHighlight and colorSwitchThumbNormal. -->
     </style>

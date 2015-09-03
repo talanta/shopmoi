@@ -42,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         injectViews();
     }
 
+
     public void inject(Object entityToGetInjected) {
         activityScopeGraph.inject(entityToGetInjected);
     }
@@ -55,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         inject(this);
     }
     private void injectViews() {
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     protected abstract List<Object> getModules();

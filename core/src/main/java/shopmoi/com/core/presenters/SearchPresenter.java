@@ -45,8 +45,8 @@ public abstract class  SearchPresenter extends Presenter<SearchView>{
 
     public abstract void detachSearchResultPart();
 
-    public int getSelectedItem() {
-        return selectedItem;
+    public Product getSelectedItem() {
+        return products.get(selectedItem);
     }
 
     public void setSelectedItem(int selectedItem) {

@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 import shopmoi.com.core.presenters.SearchPresenter;
 import shopmoi.com.core.views.SearchView;
 import shopmoi.com.shopmoi.R;

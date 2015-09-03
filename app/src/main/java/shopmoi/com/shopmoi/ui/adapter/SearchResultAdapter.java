@@ -66,7 +66,7 @@ public class SearchResultAdapter extends PagerAdapter {
 
         pic.setImageURI(Uri.parse(item.getMainImageUrl()));
         name.setText(item.getName());
-        price.setText(""+ item.getBestOffer().getSalePrice());
+        //price.setText(""+ item.getBestOffer().getSalePrice());
 
         return root;
     }

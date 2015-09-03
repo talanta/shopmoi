@@ -3,6 +3,7 @@ package shopmoi.com.shopmoi.ui.fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
@@ -12,16 +13,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.iconics.typeface.FontAwesome;
-import com.squareup.otto.Bus;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 import butterknife.OnClick;
 import shopmoi.com.core.presenters.SearchPresenter;
 import shopmoi.com.core.views.SearchResultPart;
@@ -35,20 +35,19 @@ import shopmoi.com.shopmoi.views.JazzyViewPager;
 public class SearchFragment extends BaseFragment implements SearchResultPart {
 
     private ProgressDialog progress;
-    @InjectView(R.id.pager)
+    @Bind(R.id.pager)
     protected JazzyViewPager pager;
-    @InjectView(R.id.search_view)
+    @Bind(R.id.search_view)
     protected SearchView searchView;
     @Inject
     protected SearchPresenter presenter;
 
-    @InjectView(R.id.fab_refresh)
-    FloatingActionButton fabRefresh;
-    @InjectView(R.id.fab_info)
-    FloatingActionButton fabInfo;
-    @InjectView(R.id.fab_love)
+//    @Bind(R.id.fab_refresh)
+//    FloatingActionButton fabRefresh;
+    @Bind(R.id.fab_love)
     FloatingActionButton fabLove;
-
+    @Bind(R.id.txt_price)
+    TextView txtPrice;
 
 
     protected SearchResultAdapter adapter = new SearchResultAdapter();
@@ -71,12 +70,11 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
         progress = new ProgressDialog(getActivity());
         progress.setIndeterminate(true);
 
-        fabInfo.setIconDrawable(new IconicsDrawable(getActivity(),
-                GoogleMaterial.Icon.gmd_info_outline).colorRes(android.R.color.white));
-        fabLove.setIconDrawable(new IconicsDrawable(getActivity(),
+
+        fabLove.setImageDrawable(new IconicsDrawable(getActivity(),
                 FontAwesome.Icon.faw_heart).colorRes(android.R.color.white));
-        fabRefresh.setIconDrawable(new IconicsDrawable(getActivity(),
-                GoogleMaterial.Icon.gmd_refresh).colorRes(android.R.color.white));
+//        fabRefresh.setImageDrawable(new IconicsDrawable(getActivity(),
+//                GoogleMaterial.Icon.gmd_refresh).colorRes(android.R.color.white));
 
         initPager();
         initSearch();
@@ -90,11 +88,12 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
             return;
         }
         adapter.updateProducts(presenter.getProducts());
+        // pager.setCurrentItem(presenter.getSelectedItem());
     }
 
-    protected void initPager(){
+    protected void initPager() {
         pager.setTransitionEffect(JazzyViewPager.TransitionEffect.Stack);
-        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -103,6 +102,7 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
             @Override
             public void onPageSelected(int position) {
                 presenter.setSelectedItem(position);
+                updateCurrentItem();
             }
 
             @Override
@@ -155,19 +155,25 @@ public class SearchFragment extends BaseFragment implements SearchResultPart {
         // load result..
         progress.dismiss();
         adapter.updateProducts(presenter.getProducts());
-        //pager.scroll
+        updateCurrentItem();
     }
 
-    @OnClick(R.id.fab_refresh)
-    protected void onRefresh() {
-        presenter.refresh();
-        if (presenter.getIsLoading()) {
-            progress.show();
-        }
-    }
-    @OnClick(R.id.fab_info)
+//    @OnClick(R.id.fab_refresh)
+//    protected void onRefresh() {
+//        presenter.refresh();
+//        if (presenter.getIsLoading()) {
+//            progress.show();
+//        }
+//    }
+
+    @OnClick(R.id.btn_info)
     protected void onInfo() {
         presenter.requestInfo();
+    }
+
+
+    protected void updateCurrentItem() {
+        txtPrice.setText(presenter.getSelectedItem().getBestOffer().getSalePrice() + " €");
     }
 
 }

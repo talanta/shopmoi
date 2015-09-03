@@ -10,7 +10,7 @@ import com.rey.material.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 import shopmoi.com.shopmoi.R;
 
 /**
@@ -68,7 +68,7 @@ public class LandingHelpAdapter extends RecyclerView.Adapter<LandingHelpAdapter.
 
     public class SearchItemHolder extends BaseViewHolder {
 
-        @InjectView(R.id.itemBtn)
+        @Bind(R.id.itemBtn)
         protected Button itemBtn;
 
         public SearchItemHolder(View itemView) {

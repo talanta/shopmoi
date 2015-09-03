@@ -1,6 +1,7 @@
 package shopmoi.com.shopmoi.ui.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import shopmoi.com.shopmoi.ui.activity.BaseActivity;
  * Created by machome on 20/04/15.
  */
 public abstract class BaseFragment extends Fragment {
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -32,6 +34,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void injectViews(View view) {
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
     }
 }

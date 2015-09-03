@@ -17,7 +17,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 import shopmoi.com.core.presenters.LandingPresenter;
 import shopmoi.com.core.views.LandingView;
 import shopmoi.com.core.views.View;
@@ -27,11 +27,11 @@ import shopmoi.com.shopmoi.ui.adapter.LandingHelpAdapter;
 
 public class LandingActivity extends BaseActivity implements LandingView{
 
-    @InjectView(R.id.headlogo)
+    @Bind(R.id.headlogo)
     protected ImageView headlogo;
-    @InjectView(R.id.inputField)
+    @Bind(R.id.inputField)
     protected LinearLayout inputField;
-    @InjectView(R.id.itemList)
+    @Bind(R.id.itemList)
     protected RecyclerView itemList;
 
 
